@@ -1,0 +1,20 @@
+
+# explicitly list the architechtures we can run on
+requirements = Arch == "aarch64" || Arch == "X86_64_FOO"
+
+container_image = osdf:///ospool/apXX/data/USERNAME/containers/science-$$(Arch)-v1.sif
+
+executable   = science.sh
+
+output       = $(Cluster).$(Process).out
+error        = $(Cluster).$(Process).out
+log          = $(Cluster).log
+
+transfer_input_files = sk-learn-example.py
+
+request_cpus = 1
+request_memory = 2 GB
+request_disk = 2 GB
+
+queue 1
+

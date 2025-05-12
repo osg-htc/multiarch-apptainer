@@ -1,0 +1,29 @@
+
++IsBuildJob = True
+
+requirements = Arch == "$(targetarch)" && GLIDEIN_ResourceName == "ISI"
+
+executable   = build.sh
+arguments    = $(targetarch)
+
+output       = $(Cluster).$(targetarch).out
+error        = $(Cluster).$(targetarch).out
+log          = $(Cluster).log
+
+transfer_input_files = container.def
+
+transfer_output_files = $(targetarch).sif
+
+# put the container in the OSDF directory (change this to match your ap/user)
+# also name and version the final container
+transfer_output_remaps = "$(targetarch).sif = /ospool/apXX/data/USERNAME/containers/science-$(targetarch)-v1.sif"
+
+request_cpus = 4
+request_memory = 6 GB
+request_disk = 10 GB
+
+queue targetarch from (
+  aarch64
+  X86_64
+)
+
