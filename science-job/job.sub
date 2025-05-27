@@ -1,6 +1,6 @@
 
 # explicitly list the architechtures we can run on
-requirements = Arch == "aarch64" || Arch == "X86_64_FOO"
+requirements = Arch == "aarch64" || Arch == "X86_64"
 
 container_image = osdf:///ospool/apXX/data/USERNAME/containers/science-$$(Arch)-v1.sif
 
